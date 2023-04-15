@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+
+
 import './App.css';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const dispatch = useDispatch()
+  const {count} =useSelector((storedata)=>storedata)
+
+  const increamentfunc=()=>{
+    dispatch({
+      type:"increament"
+    })
+  }
+  const decreamentfunc=()=>{
+    dispatch({
+      type:"decreament"
+    })
+  }
+  const resetfunc=()=>{
+    dispatch({
+      type:"reset"
+    })
+  }
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className='couterdiv'>
+
+        <div className='couterdiv1'>
+            {
+              count
+            }
+        </div>
+        <div className='couterdiv2'>
+            <button onClick={increamentfunc}>increament</button>
+            <button onClick={resetfunc}>reset</button>
+            <button onClick={decreamentfunc}>decrement</button>
+        </div>
+        </div>
     </div>
   );
 }
